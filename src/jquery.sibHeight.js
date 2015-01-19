@@ -40,7 +40,7 @@ Plugin.prototype = {
 			maxHeight = maxHeight > elemHeight ? maxHeight : elemHeight;
 		});
 
-		if($(window).width() > this.options.breakPoint) {
+		if($(window).width() > parseInt(this.options.breakPoint)) {
 			$siblings.css('height', maxHeight);
 		} else {
 			$siblings.css('height', 'auto');
