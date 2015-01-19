@@ -3,7 +3,7 @@
 // Create the defaults once
 var pluginName = "sibHeight",
 	defaults = {
-		breakPoint: "768px"
+		breakPoint: 768
 	};
 
 // The actual plugin constructor
@@ -14,6 +14,7 @@ function Plugin ( element, options ) {
 	this._defaults = defaults;
 	this._name = pluginName;
 	this.init();
+	this.resize();
 }
 
 Plugin.prototype = {
@@ -39,8 +40,19 @@ Plugin.prototype = {
 			maxHeight = maxHeight > elemHeight ? maxHeight : elemHeight;
 		});
 
-		$siblings.css('height', maxHeight);
+		if($(window).width() > this.options.breakPoint) {
+			$siblings.css('height', maxHeight);
+		} else {
+			$siblings.css('height', 'auto');
+		}
 
+	},
+	resize: function() {
+		var self = this;
+		$(window).resize(function(){
+			// TODO: instead of reinitializing each time, DRY this out
+			self.init();
+		});
 	}
 };
 
