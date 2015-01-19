@@ -14,7 +14,7 @@ var demoDir = './demo'
 // A handy little demo server
 gulp.task('connect', function(){
   connect.server({
-    root: 'demo',
+    root: './',
     port: 8888,
     livereload: argv.livereload == 'false' ? false : true
   });
@@ -48,7 +48,7 @@ gulp.task('build', function(){
     .pipe(gulp.dest(distDir));
 });
 
-gulp.task('serve', ['demo', 'connect', 'connect-watch']);
+gulp.task('serve', ['connect', 'connect-watch']);
 
 // Default task
 gulp.task('default', ['build']);
