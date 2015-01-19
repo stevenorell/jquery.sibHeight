@@ -21,11 +21,20 @@ Plugin.prototype = {
 	init: function () {
 
 		// set our initial variables
-		var maxHeight = 0,
-			$siblings = $(this.element.children);
+		var $siblings = $(this.element.children);
 
-		// loop through each sibling of the element
-		$siblings.each(function(){
+		if($(window).width() > parseInt(this.options.breakPoint)) {
+			$siblings.css('height', this.getMaxHeight(this.element.children));
+		} else {
+			$siblings.css('height', 'auto');
+		}
+
+	},
+	getMaxHeight: function(elements) {
+		// return the tallest element from the set of given elements
+		var maxHeight = 0;
+
+		$(elements).each(function(){
 			var $this = $(this),
 				elemHeight;
 
@@ -40,17 +49,11 @@ Plugin.prototype = {
 			maxHeight = maxHeight > elemHeight ? maxHeight : elemHeight;
 		});
 
-		if($(window).width() > parseInt(this.options.breakPoint)) {
-			$siblings.css('height', maxHeight);
-		} else {
-			$siblings.css('height', 'auto');
-		}
-
+		return maxHeight;
 	},
 	resize: function() {
 		var self = this;
 		$(window).resize(function(){
-			// TODO: instead of reinitializing each time, DRY this out
 			self.init();
 		});
 	}
