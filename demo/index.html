@@ -17,6 +17,9 @@
       background: #efefef;
       margin: 0 10px;
     }
+    ul#sib-height li.test {
+        box-sizing: border-box;
+    }
     </style>
   </head>
   <body>
@@ -36,9 +39,10 @@
         <p>Cras sagittis nisi augue, nec viverra ipsum porttitor non. Nulla ut odio ex.</p>
       </li>
     </ul>
+
     <script>
       $(function() {
-        $("#element").sibHeight({
+        $("#sib-height").sibHeight({
           propertyName: "a custom value"
         });
       });

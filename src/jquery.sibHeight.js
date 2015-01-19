@@ -14,16 +14,13 @@
 // Create the defaults once
 var pluginName = "sibHeight",
 	defaults = {
-	propertyName: "value"
-};
+		propertyName: "value"
+	};
 
 // The actual plugin constructor
 function Plugin ( element, options ) {
 	this.element = element;
-	// jQuery has an extend method which merges the contents of two or
-	// more objects, storing the result in the first object. The first object
-	// is generally empty as we don't want to alter the default options for
-	// future instances of the plugin
+
 	this.options = $.extend( {}, defaults, options );
 	this._defaults = defaults;
 	this._name = pluginName;
@@ -32,16 +29,29 @@ function Plugin ( element, options ) {
 
 Plugin.prototype = {
 	init: function () {
-		// Place initialization logic here
-		// You already have access to the DOM element and
-		// the options via the instance, e.g. this.element
-		// and this.options
-		// you can add more functions like the one below and
-		// call them like so: this.yourOtherFunction(this.element, this.options).
-		console.log("xD");
-	},
-	yourOtherFunction: function () {
-		// some logic
+
+		// set our initial variables
+		var maxHeight = 0,
+			$siblings = $(this.element.children);
+
+		// loop through each sibling of the element
+		$siblings.each(function(){
+			var $this = $(this),
+				elemHeight;
+
+			// check for border-box and get the appropriate height
+			// TODO: make this work for a mix of non- and border-box elements
+			if($this.css('box-sizing') == 'border-box') {
+				elemHeight = $this.outerHeight();
+			} else {
+				elemHeight = $this.height();
+			}
+
+			maxHeight = maxHeight > elemHeight ? maxHeight : elemHeight;
+		});
+
+		$siblings.css('height', maxHeight);
+
 	}
 };
 
