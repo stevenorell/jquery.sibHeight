@@ -1,3 +1,9 @@
+/**
+* @license
+* jquery.sibHeight.js v0.1.0
+* https://github.com/stevenorell/sibHeight
+* License: MIT
+*/
 ;(function ( $, window, document, undefined ) {
 
 // Create the defaults once
