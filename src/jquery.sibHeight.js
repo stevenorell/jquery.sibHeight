@@ -29,10 +29,12 @@ Plugin.prototype = {
 		// set our initial variables
 		var $siblings = $(this.element.children);
 
+		// remove the element's height to allow recalculation
+		$siblings.css('height', '');
+
+		// set the element's height if bigger than the breakpoint
 		if($(window).width() > parseInt(this.options.breakPoint)) {
 			$siblings.css('height', this.getMaxHeight(this.element.children));
-		} else {
-			$siblings.css('height', 'auto');
 		}
 
 	},
