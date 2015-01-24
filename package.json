@@ -4,7 +4,7 @@
   "description": "A jQuery plugin to set sibling elements to the same height.",
   "author": "Steve Norell",
   "homepage": "https://github.com/stevenorell/jquery-sibHeight",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "devDependencies": {
     "gulp": "^3.8.10",
     "gulp-connect": "^2.2.0",
