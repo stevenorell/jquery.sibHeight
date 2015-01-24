@@ -1,7 +1,7 @@
 /**
 * @license
 * jquery.sibHeight.js v0.1.1
-* https://github.com/stevenorell/sibHeight
+* https://github.com/stevenorell/jquery-sibHeight
 * License: MIT
 */
 ;(function ( $, window, document, undefined ) {
@@ -9,7 +9,7 @@
 // Create the defaults once
 var pluginName = "sibHeight",
 	defaults = {
-		breakPoint: 768
+		breakPoint: null
 	};
 
 // The actual plugin constructor
@@ -33,7 +33,7 @@ Plugin.prototype = {
 		$siblings.css('height', '');
 
 		// set the element's height if bigger than the breakpoint
-		if($(window).width() > parseInt(this.options.breakPoint)) {
+		if($(window).width() > parseInt(this.options.breakPoint) || this.options.breakPoint === null) {
 			$siblings.css('height', this.getMaxHeight(this.element.children));
 		}
 
