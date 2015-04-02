@@ -1,6 +1,6 @@
 /**
 * @license
-* jquery.sibHeight.js v0.1.2
+* jquery.sibHeight.js v0.1.3
 * https://github.com/stevenorell/jquery-sibHeight
 * License: MIT
 */
